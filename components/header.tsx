@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Menu } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { trackGetStartedClick } from "@/lib/analytics"
 
 export function Header() {
   const pathname = usePathname()
@@ -136,7 +137,9 @@ export function Header() {
         </div>
 
         <Link href="/contact" className="hidden md:block">
-          <Button className="bg-blue-500 hover:bg-blue-600 text-white">Get Started</Button>
+          <Button className="bg-blue-500 hover:bg-blue-600 text-white" onClick={() => trackGetStartedClick("header")}>
+            Get Started
+          </Button>
         </Link>
       </div>
     </header>

@@ -1,6 +1,14 @@
+"use client"
+
+import { useEffect } from "react"
+import { trackPitchDeckView } from "@/lib/analytics"
 import { Header } from "@/components/header"
 
 export default function InvestmentDeckPage() {
+  useEffect(() => {
+    trackPitchDeckView()
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900">
       <Header />

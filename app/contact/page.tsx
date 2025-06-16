@@ -1,9 +1,12 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 import { Header } from "@/components/header"
+import { trackContactFormSubmit } from "@/lib/analytics"
 
 export default function ContactPage() {
   return (
@@ -98,7 +101,12 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">Send Message</Button>
+                  <Button
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                    onClick={() => trackContactFormSubmit()}
+                  >
+                    Send Message
+                  </Button>
                 </form>
               </CardContent>
             </Card>
