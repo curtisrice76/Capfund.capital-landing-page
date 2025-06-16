@@ -16,7 +16,7 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Link href="/" className="text-xl font-bold text-white hover:text-blue-500 transition-colors">
-            CAP
+            Collective Alpha Partners
           </Link>
         </div>
 
@@ -39,6 +39,12 @@ export function Header() {
             className={`transition-colors ${isActive("/performance") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
             Performance
+          </Link>
+          <Link
+            href="/pitch-deck"
+            className={`transition-colors ${isActive("/pitch-deck") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            Pitch Deck
           </Link>
           <Link
             href="/about"
@@ -85,6 +91,14 @@ export function Header() {
                   className={`w-full ${isActive("/performance") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
                   Performance
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/pitch-deck"
+                  className={`w-full ${isActive("/pitch-deck") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  Pitch Deck
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
