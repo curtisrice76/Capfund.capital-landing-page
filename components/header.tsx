@@ -23,6 +23,12 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link
+            href="/about"
+            className={`transition-colors ${isActive("/about") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            About
+          </Link>
+          <Link
             href="/thesis"
             className={`transition-colors ${isActive("/thesis") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
@@ -47,10 +53,10 @@ export function Header() {
             Pitch Deck
           </Link>
           <Link
-            href="/about"
-            className={`transition-colors ${isActive("/about") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+            href="/investors"
+            className={`transition-colors ${isActive("/investors") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
-            About
+            Investors
           </Link>
           <Link
             href="/contact"
@@ -69,6 +75,14 @@ export function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48 bg-black/95 border-gray-800">
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/about"
+                  className={`w-full ${isActive("/about") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  About
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
                   href="/thesis"
@@ -103,10 +117,10 @@ export function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
-                  href="/about"
-                  className={`w-full ${isActive("/about") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                  href="/investors"
+                  className={`w-full ${isActive("/investors") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
-                  About
+                  Investors
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>

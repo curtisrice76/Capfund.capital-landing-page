@@ -114,8 +114,6 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-2 text-gray-300">
                   <p>General Inquiries: info@capfund.capital</p>
-                  <p>Investor Relations: investors@capfund.capital</p>
-                  <p>Media Inquiries: media@capfund.capital</p>
                 </div>
               </CardContent>
             </Card>
