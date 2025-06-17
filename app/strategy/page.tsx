@@ -213,35 +213,35 @@ export default function StrategyPage() {
               <h3 className="text-2xl font-bold text-white mb-6">Strategy Allocation</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Long/Short Equity</span>
-                  <span className="text-blue-500 font-semibold">35%</span>
+                  <span className="text-gray-300">Long/Short</span>
+                  <span className="text-blue-500 font-semibold">40%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: "35%" }}></div>
+                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: "40%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Market Neutral</span>
-                  <span className="text-green-400 font-semibold">25%</span>
+                  <span className="text-green-400 font-semibold">30%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-green-400 h-2 rounded-full" style={{ width: "25%" }}></div>
+                  <div className="bg-green-400 h-2 rounded-full" style={{ width: "30%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Event Driven</span>
-                  <span className="text-purple-400 font-semibold">20%</span>
+                  <span className="text-purple-400 font-semibold">15%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-purple-400 h-2 rounded-full" style={{ width: "20%" }}></div>
+                  <div className="bg-purple-400 h-2 rounded-full" style={{ width: "15%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Relative Value</span>
-                  <span className="text-orange-400 font-semibold">20%</span>
+                  <span className="text-orange-400 font-semibold">15%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-orange-400 h-2 rounded-full" style={{ width: "20%" }}></div>
+                  <div className="bg-orange-400 h-2 rounded-full" style={{ width: "15%" }}></div>
                 </div>
               </div>
             </div>

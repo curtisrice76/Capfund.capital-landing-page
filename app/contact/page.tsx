@@ -1,14 +1,47 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, CheckCircle, AlertCircle } from "lucide-react"
 import { Header } from "@/components/header"
 import { trackContactFormSubmit } from "@/lib/analytics"
+import { submitContactForm } from "@/app/actions/contact"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitResult, setSubmitResult] = useState<{
+    success: boolean
+    message?: string
+    error?: string
+  } | null>(null)
+
+  const handleSubmit = async (formData: FormData) => {
+    setIsSubmitting(true)
+    setSubmitResult(null)
+
+    try {
+      const result = await submitContactForm(formData)
+      setSubmitResult(result)
+
+      if (result.success) {
+        trackContactFormSubmit()
+        // Reset form
+        const form = document.getElementById("contact-form") as HTMLFormElement
+        form?.reset()
+      }
+    } catch (error) {
+      setSubmitResult({
+        success: false,
+        error: "An unexpected error occurred. Please try again.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900">
       <Header />
@@ -29,24 +62,49 @@ export default function ContactPage() {
             <Card className="bg-gray-900/80 border-gray-800">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
-                <form className="space-y-6">
+
+                {/* Success/Error Messages */}
+                {submitResult && (
+                  <div
+                    className={`mb-6 p-4 rounded-lg flex items-start space-x-3 ${
+                      submitResult.success
+                        ? "bg-green-900/20 border border-green-800"
+                        : "bg-red-900/20 border border-red-800"
+                    }`}
+                  >
+                    {submitResult.success ? (
+                      <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+                    )}
+                    <p className={`text-sm ${submitResult.success ? "text-green-300" : "text-red-300"}`}>
+                      {submitResult.success ? submitResult.message : submitResult.error}
+                    </p>
+                  </div>
+                )}
+
+                <form id="contact-form" action={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
-                        First Name
+                        First Name *
                       </label>
                       <Input
                         id="firstName"
+                        name="firstName"
+                        required
                         className="bg-black/50 border-gray-700 text-white focus:border-blue-500"
                         placeholder="John"
                       />
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
-                        Last Name
+                        Last Name *
                       </label>
                       <Input
                         id="lastName"
+                        name="lastName"
+                        required
                         className="bg-black/50 border-gray-700 text-white focus:border-blue-500"
                         placeholder="Doe"
                       />
@@ -55,11 +113,13 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email Address
+                      Email Address *
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
+                      required
                       className="bg-black/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="john.doe@example.com"
                     />
@@ -71,6 +131,7 @@ export default function ContactPage() {
                     </label>
                     <Input
                       id="company"
+                      name="company"
                       className="bg-black/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="Your Company"
                     />
@@ -80,32 +141,39 @@ export default function ContactPage() {
                     <label htmlFor="investmentSize" className="block text-sm font-medium text-gray-300 mb-2">
                       Investment Size
                     </label>
-                    <select className="w-full bg-black/50 border border-gray-700 text-white rounded-md px-3 py-2 focus:border-blue-500 focus:outline-none">
+                    <select
+                      id="investmentSize"
+                      name="investmentSize"
+                      className="w-full bg-black/50 border border-gray-700 text-white rounded-md px-3 py-2 focus:border-blue-500 focus:outline-none"
+                    >
                       <option value="">Select Range</option>
-                      <option value="1-5m">$1M - $5M</option>
-                      <option value="5-10m">$5M - $10M</option>
-                      <option value="10-25m">$10M - $25M</option>
-                      <option value="25m+">$25M+</option>
+                      <option value="$1M - $5M">$1M - $5M</option>
+                      <option value="$5M - $10M">$5M - $10M</option>
+                      <option value="$10M - $25M">$10M - $25M</option>
+                      <option value="$25M+">$25M+</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
+                      Message *
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       rows={4}
+                      required
                       className="bg-black/50 border-gray-700 text-white focus:border-blue-500"
                       placeholder="Tell us about your investment objectives and any specific questions you have..."
                     />
                   </div>
 
                   <Button
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-                    onClick={() => trackContactFormSubmit()}
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
