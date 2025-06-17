@@ -17,6 +17,18 @@ export async function submitContactForm(formData: FormData) {
       }
     }
 
+    // Debug: Check if API key exists
+    console.log("Resend API Key exists:", !!process.env.RESEND_API_KEY)
+    console.log("API Key length:", process.env.RESEND_API_KEY?.length || 0)
+
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Missing Resend API key")
+      return {
+        success: false,
+        error: "Email service not configured. Please contact us directly at info@capfund.capital.",
+      }
+    }
+
     // Email content
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -48,6 +60,16 @@ export async function submitContactForm(formData: FormData) {
       </div>
     `
 
+    const emailPayload = {
+      from: "CAP Website <onboarding@resend.dev>",
+      to: ["info@capfund.capital"],
+      subject: `New Contact Form Submission - ${firstName} ${lastName}`,
+      html: htmlContent,
+      reply_to: email,
+    }
+
+    console.log("Sending email with payload:", JSON.stringify(emailPayload, null, 2))
+
     // Send email using Resend API
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -55,25 +77,44 @@ export async function submitContactForm(formData: FormData) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
-      body: JSON.stringify({
-        from: "CAP Website <onboarding@resend.dev>",
-        to: ["info@capfund.capital"],
-        subject: `New Contact Form Submission - ${firstName} ${lastName}`,
-        html: htmlContent,
-        reply_to: email,
-      }),
+      body: JSON.stringify(emailPayload),
     })
 
+    console.log("Resend response status:", response.status)
+    console.log("Resend response headers:", Object.fromEntries(response.headers.entries()))
+
+    const responseText = await response.text()
+    console.log("Resend response body:", responseText)
+
     if (!response.ok) {
-      const errorData = await response.text()
-      console.error("Resend API error:", errorData)
+      console.error("Resend API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        body: responseText,
+      })
+
+      // Parse error for better user feedback
+      let errorMessage = "Failed to send email. Please contact us directly at info@capfund.capital."
+
+      try {
+        const errorData = JSON.parse(responseText)
+        if (errorData.message) {
+          console.error("Resend error message:", errorData.message)
+          if (errorData.message.includes("API key")) {
+            errorMessage = "Email service authentication failed. Please contact us directly."
+          }
+        }
+      } catch (parseError) {
+        console.error("Could not parse error response:", parseError)
+      }
+
       return {
         success: false,
-        error: "Failed to send email. Please contact us directly at info@capfund.capital.",
+        error: errorMessage,
       }
     }
 
-    const result = await response.json()
+    const result = JSON.parse(responseText)
     console.log("Email sent successfully:", result.id)
 
     return {
