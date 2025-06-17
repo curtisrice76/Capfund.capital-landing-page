@@ -1,6 +1,6 @@
 "use server"
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactFormWithResend(formData: FormData) {
   try {
     const firstName = formData.get("firstName") as string
     const lastName = formData.get("lastName") as string
@@ -14,6 +14,15 @@ export async function submitContactForm(formData: FormData) {
       return {
         success: false,
         error: "Please fill in all required fields.",
+      }
+    }
+
+    // Check if Resend API key is available
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Missing Resend API key")
+      return {
+        success: false,
+        error: "Email service not configured. Please contact us directly.",
       }
     }
 
@@ -48,30 +57,33 @@ export async function submitContactForm(formData: FormData) {
       </div>
     `
 
-    // Use fetch to send email via a more reliable service
-    // For now, we'll use a simple fetch approach that works in serverless
-    const emailData = {
-      to: "info@capfund.capital",
-      from: `"CAP Website" <noreply@capfund.capital>`,
-      subject: `New Contact Form Submission - ${firstName} ${lastName}`,
-      html: htmlContent,
-      replyTo: email,
-    }
-
-    // Since we can't use SMTP in this environment, let's use a webhook approach
-    // or return success and log the data for now
-    console.log("Contact form submission:", {
-      firstName,
-      lastName,
-      email,
-      company,
-      investmentSize,
-      message,
-      timestamp: new Date().toISOString(),
+    // Send email using Resend API
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "CAP Website <noreply@capfund.capital>",
+        to: ["info@capfund.capital"],
+        subject: `New Contact Form Submission - ${firstName} ${lastName}`,
+        html: htmlContent,
+        reply_to: email,
+      }),
     })
 
-    // For immediate functionality, we'll simulate success
-    // In production, you would integrate with a service like Resend, SendGrid, or Formspree
+    if (!response.ok) {
+      const errorData = await response.text()
+      console.error("Resend API error:", errorData)
+      return {
+        success: false,
+        error: "Failed to send email. Please contact us directly at info@capfund.capital.",
+      }
+    }
+
+    const result = await response.json()
+    console.log("Email sent successfully:", result.id)
 
     return {
       success: true,
@@ -81,7 +93,7 @@ export async function submitContactForm(formData: FormData) {
     console.error("Contact form error:", error)
     return {
       success: false,
-      error: "There was an error processing your message. Please contact us directly at info@capfund.capital.",
+      error: "There was an error sending your message. Please contact us directly at info@capfund.capital.",
     }
   }
 }
