@@ -73,24 +73,35 @@ export default function TaxEfficiencyPage() {
 
         {/* Tax Rate Comparison */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Effective Tax Rate Advantage</h2>
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">Federal Tax Rate Advantage</h2>
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Section 1256 Blended Rate</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Section 1256 Blended Rate – Highest Federal Bracket
+              </h3>
               <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">60% Long-Term Capital Gains (15%)</span>
-                    <span className="text-green-400 font-semibold">9.0%</span>
+                <h4 className="text-lg font-semibold text-green-400 mb-4">Federal Tax Treatment Under Section 1256:</h4>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-3 gap-4 text-sm font-semibold text-gray-400 border-b border-gray-700 pb-2">
+                    <span>Component</span>
+                    <span>Rate (%)</span>
+                    <span>Effective Impact (%)</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">40% Short-Term Capital Gains (24%)</span>
-                    <span className="text-blue-400 font-semibold">9.6%</span>
+                  <div className="grid grid-cols-3 gap-4 text-gray-300">
+                    <span>60% Long-Term Capital Gains</span>
+                    <span className="text-green-400 font-semibold">20%</span>
+                    <span className="text-green-400 font-semibold">12.0%</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-gray-300">
+                    <span>40% Short-Term Capital Gains</span>
+                    <span className="text-blue-400 font-semibold">37%</span>
+                    <span className="text-blue-400 font-semibold">14.8%</span>
                   </div>
                   <div className="border-t border-gray-700 pt-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-white font-semibold text-lg">Blended Effective Rate</span>
-                      <span className="text-green-400 font-bold text-xl">18.6%</span>
+                    <div className="grid grid-cols-3 gap-4">
+                      <span className="text-white font-semibold text-lg">Blended Federal Rate</span>
+                      <span></span>
+                      <span className="text-green-400 font-bold text-xl">26.8%</span>
                     </div>
                   </div>
                 </div>
@@ -98,21 +109,25 @@ export default function TaxEfficiencyPage() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Traditional Trading (24% Bracket)</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Traditional Short-Term Trading Tax (Top Bracket)</h3>
               <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Short-Term Trading Gains</span>
-                    <span className="text-red-400 font-semibold">24.0%</span>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4 text-sm font-semibold text-gray-400 border-b border-gray-700 pb-2">
+                    <span>Component</span>
+                    <span>Rate (%)</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Wash Sale Limitations</span>
-                    <span className="text-red-400 font-semibold">Loss of Deductions</span>
+                  <div className="grid grid-cols-2 gap-4 text-gray-300">
+                    <span>Short-Term Capital Gains</span>
+                    <span className="text-red-400 font-semibold">37%</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 text-gray-300">
+                    <span>Wash Sale Rules</span>
+                    <span className="text-red-400 font-semibold">Applies</span>
                   </div>
                   <div className="border-t border-gray-700 pt-4">
-                    <div className="flex justify-between items-center">
+                    <div className="grid grid-cols-2 gap-4">
                       <span className="text-white font-semibold text-lg">Effective Rate</span>
-                      <span className="text-red-400 font-bold text-xl">24.0%+</span>
+                      <span className="text-red-400 font-bold text-xl">37.0%+</span>
                     </div>
                   </div>
                 </div>
@@ -122,8 +137,123 @@ export default function TaxEfficiencyPage() {
 
           <div className="text-center mt-8">
             <Badge className="bg-green-600/20 text-green-400 border-green-500 text-lg px-6 py-2">
-              Tax Savings: ~5.4 percentage points lower effective rate
+              📉 Federal Tax Savings with Section 1256: ~10.2 percentage points
             </Badge>
+          </div>
+        </section>
+
+        {/* State Tax Impact */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">Combined Federal + State Tax Impact</h2>
+          <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                🧾 Blended Section 1256 Rate vs. Traditional Short-Term Trading
+              </h3>
+              <p className="text-gray-300 text-lg">
+                <span className="text-blue-400 font-semibold">Federal Tax Bracket: 37%</span> |
+                <span className="text-purple-400 font-semibold"> State: Varies</span> |
+                <span className="text-green-400 font-semibold"> Wash Sale Rules: Do Not Apply to 1256</span>
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h4 className="text-xl font-semibold text-blue-400 mb-4 text-center">
+                📊 Federal Blended Rate (Section 1256):
+              </h4>
+              <div className="bg-blue-900/20 rounded-lg p-6 border border-blue-800 max-w-2xl mx-auto">
+                <div className="space-y-3 text-center">
+                  <div className="text-gray-300">
+                    60% @ 20% LT Cap Gains = <span className="text-green-400 font-semibold">12.0%</span>
+                  </div>
+                  <div className="text-gray-300">
+                    40% @ 37% ST Cap Gains = <span className="text-blue-400 font-semibold">14.8%</span>
+                  </div>
+                  <div className="border-t border-blue-700 pt-3 mt-3">
+                    <div className="text-white font-bold text-lg">
+                      ✅ Blended Federal Rate: <span className="text-green-400">26.8%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-xl font-semibold text-purple-400 mb-6 text-center">
+                🌍 Combined Federal + State Effective Rates (Approximate)
+              </h4>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-700">
+                      <th className="text-left text-white font-semibold py-4 px-4">State</th>
+                      <th className="text-center text-white font-semibold py-4 px-4">Top State Tax Rate</th>
+                      <th className="text-center text-green-400 font-semibold py-4 px-4">1256 Blended Rate</th>
+                      <th className="text-center text-red-400 font-semibold py-4 px-4">Short-Term Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-gray-300">
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">California</td>
+                      <td className="text-center py-3 px-4">13.3%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~40.1%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~50.3%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">New York (NYC)</td>
+                      <td className="text-center py-3 px-4">~10.9% + 3.88% NYC</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~41.6%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~51.9%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">New Jersey</td>
+                      <td className="text-center py-3 px-4">10.75%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~37.6%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~47.75%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">Hawaii</td>
+                      <td className="text-center py-3 px-4">11.0%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~37.8%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~48.0%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">Minnesota</td>
+                      <td className="text-center py-3 px-4">9.85%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~36.7%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~46.85%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">Oregon</td>
+                      <td className="text-center py-3 px-4">9.9%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~36.7%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~46.9%</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="py-3 px-4 font-semibold">Illinois</td>
+                      <td className="text-center py-3 px-4">4.95% (flat)</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~31.75%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~41.95%</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-semibold">Oklahoma</td>
+                      <td className="text-center py-3 px-4">4.75%</td>
+                      <td className="text-center py-3 px-4 text-green-400 font-semibold">~31.55%</td>
+                      <td className="text-center py-3 px-4 text-red-400 font-semibold">~41.75%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-xl p-6 border border-green-800/50">
+              <h4 className="text-xl font-bold text-white mb-4 text-center">💡 Tax Savings Opportunity</h4>
+              <p className="text-gray-300 text-lg text-center">
+                Across most high-tax states, Section 1256 contracts yield{" "}
+                <span className="text-green-400 font-bold">~9–11 percentage points</span> lower effective tax rates
+                compared to traditional short-term strategies — and avoid wash sale limitations.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -236,16 +366,16 @@ export default function TaxEfficiencyPage() {
             <h2 className="text-3xl font-bold text-white mb-6 text-center">Tax Efficiency Summary</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-green-400 mb-2">~5.4%</div>
-                <div className="text-gray-300">Lower Effective Tax Rate</div>
+                <div className="text-4xl font-bold text-green-400 mb-2">~10.2%</div>
+                <div className="text-gray-300">Lower Federal Tax Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-400 mb-2">100%</div>
+                <div className="text-4xl font-bold text-blue-400 mb-2">9-11%</div>
+                <div className="text-gray-300">Combined Tax Savings (High-Tax States)</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-purple-400 mb-2">100%</div>
                 <div className="text-gray-300">Loss Deductibility</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-purple-400 mb-2">3 Years</div>
-                <div className="text-gray-300">Loss Carryback Period</div>
               </div>
             </div>
           </div>
