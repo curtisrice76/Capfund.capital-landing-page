@@ -42,10 +42,22 @@ export function Header() {
             Strategy
           </Link>
           <Link
+            href="/investment"
+            className={`transition-colors ${isActive("/investment") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            Investment
+          </Link>
+          <Link
             href="/performance"
             className={`transition-colors ${isActive("/performance") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
             Performance
+          </Link>
+          <Link
+            href="/tax-efficiency"
+            className={`transition-colors ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            Tax Efficiency
           </Link>
           <Link
             href="/pitch-deck"
@@ -102,10 +114,26 @@ export function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
+                  href="/investment"
+                  className={`w-full ${isActive("/investment") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  Investment
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
                   href="/performance"
                   className={`w-full ${isActive("/performance") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
                   Performance
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/tax-efficiency"
+                  className={`w-full ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  Tax Efficiency
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>

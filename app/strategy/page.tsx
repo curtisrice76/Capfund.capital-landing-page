@@ -214,67 +214,61 @@ export default function StrategyPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Long/Short</span>
-                  <span className="text-blue-500 font-semibold">40%</span>
+                  <span className="text-blue-500 font-semibold">18%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: "40%" }}></div>
+                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: "18%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Market Neutral</span>
-                  <span className="text-green-400 font-semibold">30%</span>
+                  <span className="text-green-400 font-semibold">27%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-green-400 h-2 rounded-full" style={{ width: "30%" }}></div>
+                  <div className="bg-green-400 h-2 rounded-full" style={{ width: "27%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Event Driven</span>
-                  <span className="text-purple-400 font-semibold">15%</span>
+                  <span className="text-purple-400 font-semibold">18%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-purple-400 h-2 rounded-full" style={{ width: "15%" }}></div>
+                  <div className="bg-purple-400 h-2 rounded-full" style={{ width: "18%" }}></div>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Relative Value</span>
-                  <span className="text-orange-400 font-semibold">15%</span>
+                  <span className="text-orange-400 font-semibold">36%</span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div className="bg-orange-400 h-2 rounded-full" style={{ width: "15%" }}></div>
+                  <div className="bg-orange-400 h-2 rounded-full" style={{ width: "36%" }}></div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Market Regime Performance */}
-        <section>
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Performance Across Market Regimes</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-green-900/20 border-green-800">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-bold text-green-400 mb-2">Bull Markets</h3>
-                <p className="text-2xl font-bold text-white mb-2">+18.5%</p>
-                <p className="text-gray-300 text-sm">Average Annual Return</p>
-              </CardContent>
-            </Card>
+            {/* Trading Style Allocation */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-white mb-6">Trading Style</h3>
+              <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Systematic</span>
+                    <span className="text-blue-500 font-semibold">68%</span>
+                  </div>
+                  <div className="w-full bg-gray-800 rounded-full h-2">
+                    <div className="bg-blue-500 h-2 rounded-full" style={{ width: "68%" }}></div>
+                  </div>
 
-            <Card className="bg-red-900/20 border-red-800">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-bold text-red-400 mb-2">Bear Markets</h3>
-                <p className="text-2xl font-bold text-white mb-2">+8.2%</p>
-                <p className="text-gray-300 text-sm">Average Annual Return</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-blue-900/20 border-blue-800">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-bold text-blue-400 mb-2">Sideways Markets</h3>
-                <p className="text-2xl font-bold text-white mb-2">+12.1%</p>
-                <p className="text-gray-300 text-sm">Average Annual Return</p>
-              </CardContent>
-            </Card>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Discretionary</span>
+                    <span className="text-orange-400 font-semibold">32%</span>
+                  </div>
+                  <div className="w-full bg-gray-800 rounded-full h-2">
+                    <div className="bg-orange-400 h-2 rounded-full" style={{ width: "32%" }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

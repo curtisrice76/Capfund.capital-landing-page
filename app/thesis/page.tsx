@@ -282,41 +282,120 @@ export default function ThesisPage() {
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">🎯 Portfolio Objectives and Risk Profile</h2>
           <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-gray-700">
-                    <th className="text-left text-white font-semibold py-4 text-lg">Objective</th>
-                    <th className="text-right text-blue-500 font-semibold py-4 text-lg">Target</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  <tr className="border-b border-gray-800">
-                    <td className="py-4 text-lg">Annual Return (Net)</td>
-                    <td className="text-right text-blue-400 font-semibold text-lg">13–18%</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-4 text-lg">Volatility</td>
-                    <td className="text-right text-green-400 font-semibold text-lg">{"<7%"}</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-4 text-lg">Max Monthly Drawdown</td>
-                    <td className="text-right text-purple-400 font-semibold text-lg">{"< 2.5%"}</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-4 text-lg">Max Annual Drawdown</td>
-                    <td className="text-right text-orange-400 font-semibold text-lg">~0.0%</td>
-                  </tr>
-                  <tr className="border-b border-gray-800">
-                    <td className="py-4 text-lg">Sharpe Ratio</td>
-                    <td className="text-right text-blue-400 font-semibold text-lg">2.0-2.5</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 text-lg">Beta to S&P 500</td>
-                    <td className="text-right text-gray-400 font-semibold text-lg">~0.0 to -0.2</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* CAP Targets */}
+              <div>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6 text-center">CAP Forward Targets</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left text-white font-semibold py-4 text-lg">Objective</th>
+                        <th className="text-right text-blue-500 font-semibold py-4 text-lg">Target Range</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-300">
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Annual Return (Net)</td>
+                        <td className="text-right text-blue-400 font-semibold text-lg">17–27%</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Volatility</td>
+                        <td className="text-right text-green-400 font-semibold text-lg">9–14%</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Sharpe Ratio</td>
+                        <td className="text-right text-purple-400 font-semibold text-lg">1.5–2.5</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Max Annual Drawdown</td>
+                        <td className="text-right text-orange-400 font-semibold text-lg">{"< 5%"}</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Gain Frequency</td>
+                        <td className="text-right text-green-400 font-semibold text-lg">{"≥ 85%"}</td>
+                      </tr>
+                      <tr>
+                        <td className="py-4 text-lg">Beta to S&P 500</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">0.0 to 0.3</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* S&P 500 Historical */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-400 mb-6 text-center">S&P 500 Historical</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left text-white font-semibold py-4 text-lg">Metric</th>
+                        <th className="text-right text-gray-400 font-semibold py-4 text-lg">Actual</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-300">
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Annual Return</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">8.62%</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Volatility</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">15.06%</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Sharpe Ratio</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">0.56</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Max Annual Drawdown</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">-38.49%</td>
+                      </tr>
+                      <tr className="border-b border-gray-800">
+                        <td className="py-4 text-lg">Gain Frequency</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">75.22%</td>
+                      </tr>
+                      <tr>
+                        <td className="py-4 text-lg">Beta to S&P 500</td>
+                        <td className="text-right text-gray-400 font-semibold text-lg">1.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* Performance Comparison Summary */}
+            <div className="mt-12 bg-gradient-to-r from-blue-900/30 to-green-900/30 rounded-xl p-6 border border-blue-800/50">
+              <h4 className="text-xl font-bold text-white mb-4 text-center">CAP Advantage vs S&P 500</h4>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-green-400 mb-2">2-3x</div>
+                  <div className="text-gray-300 text-sm">Higher Returns</div>
+                  <div className="text-xs text-gray-400">(17-27% vs 8.62%)</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2">3-4x</div>
+                  <div className="text-gray-300 text-sm">Better Sharpe Ratio</div>
+                  <div className="text-xs text-gray-400">(1.5-2.5 vs 0.56)</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-purple-400 mb-2">40%</div>
+                  <div className="text-gray-300 text-sm">Lower Volatility</div>
+                  <div className="text-xs text-gray-400">(9-14% vs 15.06%)</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Historical Performance Note */}
+            <div className="mt-8 bg-green-900/20 rounded-lg p-6 border border-green-800">
+              <h4 className="text-lg font-semibold text-green-400 mb-3">📈 Historical Achievement</h4>
+              <p className="text-gray-300 text-sm">
+                CAP has historically delivered 25.34% compound annual returns with 11.37% volatility, 100% gain
+                frequency, and zero annual losses. Forward targets are conservatively set based on this track record
+                while maintaining superior risk-adjusted performance relative to traditional equity markets.
+              </p>
             </div>
           </div>
         </section>
