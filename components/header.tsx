@@ -42,10 +42,16 @@ export function Header() {
             Strategy
           </Link>
           <Link
+            href="/tax-efficiency"
+            className={`transition-colors ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            Tax Efficiency
+          </Link>
+          <Link
             href="/investment"
             className={`transition-colors ${isActive("/investment") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
-            Investment
+            Investments
           </Link>
           <Link
             href="/performance"
@@ -54,16 +60,22 @@ export function Header() {
             Performance
           </Link>
           <Link
-            href="/tax-efficiency"
-            className={`transition-colors ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+            href="/team"
+            className={`transition-colors ${isActive("/team") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
-            Tax Efficiency
+            Team
+          </Link>
+          <Link
+            href="/back-office"
+            className={`transition-colors ${isActive("/back-office") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+          >
+            Back Office
           </Link>
           <Link
             href="/pitch-deck"
             className={`transition-colors ${isActive("/pitch-deck") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
-            Pitch Deck
+            Pitch
           </Link>
           <Link
             href="/investors"
@@ -114,10 +126,18 @@ export function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
+                  href="/tax-efficiency"
+                  className={`w-full ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  Tax Efficiency
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
                   href="/investment"
                   className={`w-full ${isActive("/investment") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
-                  Investment
+                  Investments
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -130,10 +150,18 @@ export function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
-                  href="/tax-efficiency"
-                  className={`w-full ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                  href="/team"
+                  className={`w-full ${isActive("/team") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
-                  Tax Efficiency
+                  Team
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/back-office"
+                  className={`w-full ${isActive("/back-office") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
+                >
+                  Back Office
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -141,7 +169,7 @@ export function Header() {
                   href="/pitch-deck"
                   className={`w-full ${isActive("/pitch-deck") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
-                  Pitch Deck
+                  Pitch
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
