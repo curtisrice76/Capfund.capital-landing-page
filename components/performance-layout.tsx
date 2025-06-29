@@ -1,20 +1,19 @@
 "use client"
 
-import type React from "react"
-
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import type { ReactNode } from "react"
 
 interface PerformanceLayoutProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function PerformanceLayout({ children }: PerformanceLayoutProps) {
   const pathname = usePathname()
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900">
       {/* Performance Navigation */}
       <div className="border-b border-gray-800/50 bg-black/60">
         <div className="container mx-auto px-4 lg:px-6">

@@ -282,12 +282,12 @@ export default function ThesisPage() {
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">🎯 Portfolio Objectives and Risk Profile</h2>
           <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* CAP Targets */}
+            <div className="grid gap-12">
+              {/* CAP Forward Targets */}
               <div>
                 <h3 className="text-2xl font-bold text-blue-400 mb-6 text-center">CAP Forward Targets</h3>
                 <div className="overflow-x-auto">
-                  <table className="w-full">
+                  <table className="w-full mx-auto">
                     <thead>
                       <tr className="border-b border-gray-700">
                         <th className="text-left text-white font-semibold py-4 text-lg">Objective</th>
@@ -318,47 +318,6 @@ export default function ThesisPage() {
                       <tr>
                         <td className="py-4 text-lg">Beta to S&P 500</td>
                         <td className="text-right text-gray-400 font-semibold text-lg">0.0 to 0.3</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* S&P 500 Historical */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-400 mb-6 text-center">S&P 500 Historical</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b border-gray-700">
-                        <th className="text-left text-white font-semibold py-4 text-lg">Metric</th>
-                        <th className="text-right text-gray-400 font-semibold py-4 text-lg">Actual</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-gray-300">
-                      <tr className="border-b border-gray-800">
-                        <td className="py-4 text-lg">Annual Return</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">8.62%</td>
-                      </tr>
-                      <tr className="border-b border-gray-800">
-                        <td className="py-4 text-lg">Volatility</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">15.06%</td>
-                      </tr>
-                      <tr className="border-b border-gray-800">
-                        <td className="py-4 text-lg">Sharpe Ratio</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">0.56</td>
-                      </tr>
-                      <tr className="border-b border-gray-800">
-                        <td className="py-4 text-lg">Max Annual Drawdown</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">-38.49%</td>
-                      </tr>
-                      <tr className="border-b border-gray-800">
-                        <td className="py-4 text-lg">Gain Frequency</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">75.22%</td>
-                      </tr>
-                      <tr>
-                        <td className="py-4 text-lg">Beta to S&P 500</td>
-                        <td className="text-right text-gray-400 font-semibold text-lg">1.00</td>
                       </tr>
                     </tbody>
                   </table>

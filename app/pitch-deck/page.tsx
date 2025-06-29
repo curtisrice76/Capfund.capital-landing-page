@@ -1,17 +1,9 @@
-"use client"
-
-import { useEffect } from "react"
-import { trackPitchDeckView } from "@/lib/analytics"
 import { Header } from "@/components/header"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { TrendingUp, Shield, Target, BarChart3, AlertTriangle, Download, ExternalLink } from "lucide-react"
+import { Download, Mail, TrendingUp, Shield, Target, PieChart, CheckCircle } from "lucide-react"
 
-export default function InvestmentDeckPage() {
-  useEffect(() => {
-    trackPitchDeckView()
-  }, [])
-
+export default function PitchDeckPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900">
       <Header />
@@ -19,271 +11,325 @@ export default function InvestmentDeckPage() {
       <div className="container mx-auto px-4 lg:px-6 py-20">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Collective Alpha Partners:
-            <span className="block text-blue-500">Multi-Asset/Strategy Investment Approach</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-8">
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">Collective Alpha Partners</h1>
+          <h2 className="text-2xl lg:text-3xl font-semibold text-blue-400 mb-4">
+            Multi-Asset/Strategy Investment Approach
+          </h2>
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto">
             Collective Alpha Partners is a systematic, actively managed fund designed to generate uncorrelated,
             risk-adjusted alpha through a multi-strategy, multi-asset, and multi-manager framework. The fund aims to
             deliver consistent, tax-efficient returns across all markets and market regimes—bull, bear, or
             sideways—while maintaining a disciplined management approach to maximize capital efficiency.
           </p>
-
-          {/* Pitch Deck Access Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8"
-              onClick={() => {
-                const element = document.getElementById("embedded-deck")
-                element?.scrollIntoView({ behavior: "smooth" })
-              }}
-            >
-              <ExternalLink className="h-5 w-5 mr-2" />
-              View Interactive Pitch Deck
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
-              onClick={() => window.open("https://gamma.app/embed/wv14qwb5trxrpoh", "_blank")}
-            >
-              <Download className="h-5 w-5 mr-2" />
-              Open in New Tab
-            </Button>
-          </div>
         </div>
 
-        {/* Embedded Pitch Deck */}
-        <section id="embedded-deck" className="mb-20">
-          <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-            <div className="flex justify-center">
-              <div className="w-full max-w-6xl">
-                <iframe
-                  src="https://gamma.app/embed/wv14qwb5trxrpoh"
-                  style={{
-                    width: "100%",
-                    height: "700px",
-                    border: "none",
-                    borderRadius: "12px",
-                  }}
-                  allow="fullscreen"
-                  title="Collective Alpha Partners: Multi-Asset/Strategy Investment Approach"
-                  className="shadow-2xl"
-                />
-              </div>
-            </div>
-
-            {/* Deck Navigation Help */}
-            <div className="mt-6 text-center">
-              <p className="text-gray-400 text-sm">
-                Use arrow keys or click to navigate through the presentation. Press F for fullscreen mode.
-              </p>
+        {/* Download Section */}
+        <section className="mb-16">
+          <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-gray-800 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Access Full Pitch Deck</h2>
+            <p className="text-gray-300 mb-6">
+              Download our comprehensive investor presentation or contact us for more information.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
+                <Download className="h-4 w-4 mr-2" />
+                Download PDF
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                Contact: curtis@capfund.capital
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* Pitch Deck Highlights */}
+        {/* CAP Objectives */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Pitch Deck Highlights</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">CAP Objectives</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-gray-900/80 border-gray-800">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Key Presentation Topics</h3>
-                <ul className="text-gray-300 space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Multi-asset/strategy investment framework</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Positive Gamma convex alpha generation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Five strategic pillars and portfolio construction</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Performance comparison vs S&P 500</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Risk management and fund structure</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-3">•</span>
-                    <span>Tax efficiency advantages</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-900/80 border-gray-800">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Investment Advantages</h3>
-                <ul className="text-gray-300 space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>25.34% compound annual returns vs 8.62% S&P 500</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>Lower volatility with superior risk-adjusted returns</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>100% annual gain frequency with zero losing years</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>Uncorrelated performance across market regimes</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>Tax-efficient structure with 60/40 treatment</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-3">✓</span>
-                    <span>$475M collective AUM across 6 managed funds</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Disclosure Section */}
-        <section className="mb-20">
-          <Card className="bg-red-900/20 border-red-800">
-            <CardContent className="p-8">
-              <h2 className="text-2xl font-bold text-red-400 mb-6 flex items-center">
-                <AlertTriangle className="h-6 w-6 mr-3" />
-                Disclosure
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
-                <div>
-                  <h3 className="font-semibold text-white mb-2">Investment Terms:</h3>
-                  <p className="mb-4">
-                    This presentation is for informational purposes only and does not constitute an offer to buy or sell
-                    securities. Investments in Collective Alpha Partners (CAP) are exclusively available to accredited
-                    investors under Regulation D (Rule 506), subject to the Private Placement Memorandum (PPM) terms.
-                  </p>
-
-                  <h3 className="font-semibold text-white mb-2">Regulatory Status:</h3>
-                  <p>
-                    CAP operates as a private investment fund with potential exemption from SEC registration under the
-                    Investment Company Act of 1940. Our fund manager, Hoyle Creek Capital, operates either as an Exempt
-                    Reporting Adviser (ERA) or Registered Investment Adviser (RIA), in compliance with applicable
-                    federal and state regulations.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-white mb-2">Risk Warning:</h3>
-                  <p className="mb-4">
-                    Investors should understand that these investments are illiquid, speculative, and carry risk of
-                    complete capital loss. While we make forward-looking statements based on careful analysis, actual
-                    results may differ significantly due to market conditions, economic shifts, and regulatory changes.
-                  </p>
-
-                  <h3 className="font-semibold text-white mb-2">Regulatory Disclaimer:</h3>
-                  <p>
-                    This investment has not been reviewed, approved, or endorsed by the SEC, FINRA, or any other U.S.
-                    regulatory authority. We strongly advise potential investors to conduct thorough due diligence and
-                    seek professional financial, legal, and tax counsel before making any investment decisions.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* CAP Objective */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">CAP Objective</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <Card className="bg-gray-900/80 border-gray-800 text-center">
-              <CardContent className="p-6">
-                <TrendingUp className="h-8 w-8 text-blue-500 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Absolute Returns</h3>
+              <CardContent className="p-6 text-center">
+                <TrendingUp className="h-12 w-12 text-green-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-3">Absolute Returns</h3>
                 <p className="text-gray-300 text-sm">
                   Generate positive risk adjusted returns regardless of market direction.
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="bg-gray-900/80 border-gray-800 text-center">
-              <CardContent className="p-6">
-                <Shield className="h-8 w-8 text-green-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Risk Management</h3>
+            <Card className="bg-gray-900/80 border-gray-800">
+              <CardContent className="p-6 text-center">
+                <Shield className="h-12 w-12 text-blue-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-3">Risk Management</h3>
                 <p className="text-gray-300 text-sm">Strict drawdown controls across all market conditions.</p>
               </CardContent>
             </Card>
-
-            <Card className="bg-gray-900/80 border-gray-800 text-center">
-              <CardContent className="p-6">
-                <Target className="h-8 w-8 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Low Correlation</h3>
+            <Card className="bg-gray-900/80 border-gray-800">
+              <CardContent className="p-6 text-center">
+                <Target className="h-12 w-12 text-purple-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-3">Low Correlation</h3>
                 <p className="text-gray-300 text-sm">Performance independent from traditional market movements.</p>
               </CardContent>
             </Card>
-
-            <Card className="bg-gray-900/80 border-gray-800 text-center">
-              <CardContent className="p-6">
-                <BarChart3 className="h-8 w-8 text-orange-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Strategy Integration</h3>
+            <Card className="bg-gray-900/80 border-gray-800">
+              <CardContent className="p-6 text-center">
+                <PieChart className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-3">Strategy Integration</h3>
                 <p className="text-gray-300 text-sm">Combine complementary approaches for enhanced stability.</p>
               </CardContent>
             </Card>
           </div>
-
-          <div className="bg-black/60 rounded-2xl p-8 border border-gray-800">
-            <p className="text-gray-300 text-lg leading-relaxed">
+          <div className="mt-8 bg-gray-900/50 rounded-lg p-6 border border-gray-800">
+            <p className="text-gray-300 text-center">
               Collective Alpha Partners aims to deliver consistent performance through market cycles. Our
               volatility-managed approach maintains stability during turbulence while capturing upside in favorable
               conditions. We aggregate capital, dispersing across diverse asset classes and investment strategies to
               create optimal portfolio. Our focus is on delivering returns that are independent of traditional market
-              exposure through sophisticated investment approaches. This is achieved through active collaboration with
-              premier CTAs and investment managers while working alongside strategic capital partners to enable
-              institutional-scale capital deployment to achieve the refined granularity of optimization.
+              exposure through sophisticated investment approaches.
             </p>
           </div>
         </section>
 
-        {/* Performance Targets */}
+        {/* Risk and Reward Balance */}
+        <section className="mb-20">
+          <div className="bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-2xl p-8 border border-gray-800">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">Risk and Reward Balance</h2>
+            <blockquote className="text-xl text-gray-300 text-center mb-8 italic">
+              "The art of investing is finding the right balance between risk and reward." – Benjamin Graham
+            </blockquote>
+            <p className="text-2xl font-bold text-green-400 text-center mb-8">CAP masters this balance!</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <h4 className="text-lg font-semibold text-white mb-2">Optimized Returns</h4>
+                <p className="text-gray-300 text-sm">Maximize potential gains while managing risk exposure</p>
+              </div>
+              <div className="text-center">
+                <h4 className="text-lg font-semibold text-white mb-2">Risk Management</h4>
+                <p className="text-gray-300 text-sm">Sophisticated systems to protect capital in volatile markets</p>
+              </div>
+              <div className="text-center">
+                <h4 className="text-lg font-semibold text-white mb-2">Strategic Risk-Taking</h4>
+                <p className="text-gray-300 text-sm">Calculated positions to enhance reward potential</p>
+              </div>
+              <div className="text-center">
+                <h4 className="text-lg font-semibold text-white mb-2">Balanced Approach</h4>
+                <p className="text-gray-300 text-sm">Careful calibration of risk-reward ratios across investments</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Market Opportunity */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">Market Opportunity and Need</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-red-900/20 border-red-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-red-400 mb-6">Traditional Portfolio Limitations</h3>
+                <p className="text-gray-300 mb-4">
+                  Equity-focused, passive ETF-driven, or single-strategy hedge funds often fail to perform consistently
+                  across all market environments. Single-strategy funds are prone to prolonged periods of
+                  underperformance with higher risk profiles.
+                </p>
+                <h4 className="text-lg font-semibold text-white mb-3">Key Market Gaps Addressed</h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• Diversification challenges due to increasing asset correlation</li>
+                  <li>• Systematic drawdowns in single-strategy funds</li>
+                  <li>• Higher risk profiles</li>
+                  <li>• Tax efficiency challenges in traditional vehicles</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="bg-green-900/20 border-green-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-green-400 mb-6">Expanded Investment Summary Thesis</h3>
+                <p className="text-gray-300">
+                  This portfolio is a multi-manager investment construct designed to deliver absolute, risk-adjusted
+                  returns with low correlation to traditional markets. The fund sources alpha from across a broad
+                  spectrum of uncorrelated and diversifying investment strategies, targeting systematic inefficiencies,
+                  behavioral patterns, macro dislocations, and volatility premiums.
+                </p>
+                <p className="text-gray-300 mt-4">
+                  Each strategy is institutionally vetted, employs robust risk controls, and is selected for its ability
+                  to generate consistent performance across different market regimes. The overarching goal is to combine
+                  these strategies into a single, volatility-managed, drawdown-aware fund that performs through trend,
+                  chop, crisis, and recovery.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* CAP Portfolio: Five Strategic Pillars */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">CAP Portfolio: Five Strategic Pillars</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="bg-blue-900/20 border-blue-800">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">Systematic Trend</h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  Short-term quantitative trading programs using momentum and volatility signals across global futures.
+                </p>
+                <ul className="text-gray-400 text-xs space-y-1">
+                  <li>• Dynamic notional funding</li>
+                  <li>• Algorithmic execution</li>
+                  <li>• Low equity correlation</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="bg-red-900/20 border-red-800">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-red-400 mb-4">Crisis Alpha</h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  Strategies designed to profit from market dislocations and volatility spikes.
+                </p>
+                <ul className="text-gray-400 text-xs space-y-1">
+                  <li>• Long volatility positioning</li>
+                  <li>• Machine learning detection</li>
+                  <li>• Tail risk hedging</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="bg-green-900/20 border-green-800">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-green-400 mb-4">Global Macro</h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  Concentrated strategies focusing on inflection points across bonds, FX, and equity indices.
+                </p>
+                <ul className="text-gray-400 text-xs space-y-1">
+                  <li>• Catalyst-driven timing</li>
+                  <li>• Quantitative overlays</li>
+                  <li>• Policy shift opportunism</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="bg-purple-900/20 border-purple-800">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">Volatility & Commodity</h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  Options-based income and commodity/ag trading provide steady returns and macro exposure.
+                </p>
+                <ul className="text-gray-400 text-xs space-y-1">
+                  <li>• Premium decay capture</li>
+                  <li>• Supply/demand analysis</li>
+                  <li>• Uncorrelated alpha streams</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Positive Gamma */}
+        <section className="mb-20">
+          <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 rounded-2xl p-8 border border-yellow-800">
+            <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">
+              Positive Gamma: Convex Alpha Generation
+            </h2>
+            <p className="text-gray-300 mb-8 text-center">
+              In options theory, Gamma (Γ) is the rate of change of an option's Delta relative to movements in the
+              underlying asset's price. CAP's Positive Gamma portfolio deploys capital into various risk management and
+              trading approaches designed to benefit from increasing market volatility and increasing market trends.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <Card className="bg-black/40 border-yellow-700">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-yellow-400 mb-4">Convex Payoff Structure</h3>
+                  <ul className="text-gray-300 text-sm space-y-2">
+                    <li>• Automatic buying into strength</li>
+                    <li>• Stepping back on weakness</li>
+                    <li>• Downside contained by stop-loss triggers</li>
+                    <li>• Upside magnified through compounding winners</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card className="bg-black/40 border-yellow-700">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-yellow-400 mb-4">Unitized Risk Positioning</h3>
+                  <ul className="text-gray-300 text-sm space-y-2">
+                    <li>• Risk-linked to portfolio equity</li>
+                    <li>• Scales up when volatility is below target</li>
+                    <li>• Throttles down during volatility spikes</li>
+                    <li>• Creates built-in convexity through risk budgeting</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card className="bg-black/40 border-yellow-700">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold text-yellow-400 mb-4">Performance Impact</h3>
+                  <ul className="text-gray-300 text-sm space-y-2">
+                    <li>• Reduces drawdowns by ~30% versus trend alone</li>
+                    <li>• Added return during volatility spikes</li>
+                    <li>• Contributes Sharpe ratio improvement</li>
+                    <li>• Provides tail-risk "insurance" without fixed costs</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-black/60 rounded-lg p-6 border border-yellow-700">
+              <h3 className="text-xl font-bold text-yellow-400 mb-4 text-center">
+                Positive Gamma: Convex Alpha Metrics
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-green-400">7.3%</div>
+                  <div className="text-sm text-gray-300">Annualized Return (Gamma Contribution)</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-blue-400">+8.8</div>
+                  <div className="text-sm text-gray-300">Skewness (Return Distribution)</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-purple-400">1.75x</div>
+                  <div className="text-sm text-gray-300">Tail Ratio (95th / 5th percentile)</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-orange-400">&lt;0.2</div>
+                  <div className="text-sm text-gray-300">Correlation to Equities & Bonds</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-red-400">≈ 20%</div>
+                  <div className="text-sm text-gray-300">Contribution to Total Portfolio Alpha</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Expected Outcomes */}
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">Expected Outcomes and Performance Targets</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-green-900/20 border-green-800 text-center">
               <CardContent className="p-8">
                 <div className="text-4xl font-bold text-green-400 mb-2">17-27%</div>
-                <div className="text-white font-semibold mb-2">Annualized Return</div>
-                <div className="text-gray-300 text-sm">Target range for yearly returns</div>
+                <div className="text-lg font-semibold text-white mb-2">Annualized Return</div>
+                <div className="text-sm text-gray-300">Target range for yearly returns</div>
               </CardContent>
             </Card>
-
             <Card className="bg-blue-900/20 border-blue-800 text-center">
               <CardContent className="p-8">
-                <div className="text-4xl font-bold text-blue-400 mb-2">&lt;15%</div>
-                <div className="text-white font-semibold mb-2">Volatility</div>
-                <div className="text-gray-300 text-sm">Expected range of price fluctuations</div>
+                <div className="text-4xl font-bold text-blue-400 mb-2">{"<15%"}</div>
+                <div className="text-lg font-semibold text-white mb-2">Volatility</div>
+                <div className="text-sm text-gray-300">Expected range of price fluctuations</div>
               </CardContent>
             </Card>
-
             <Card className="bg-purple-900/20 border-purple-800 text-center">
               <CardContent className="p-8">
                 <div className="text-4xl font-bold text-purple-400 mb-2">~2.0</div>
-                <div className="text-white font-semibold mb-2">Sharpe Ratio</div>
-                <div className="text-gray-300 text-sm">Measure of risk-adjusted performance</div>
+                <div className="text-lg font-semibold text-white mb-2">Sharpe Ratio</div>
+                <div className="text-sm text-gray-300">Measure of risk-adjusted performance</div>
               </CardContent>
             </Card>
-
             <Card className="bg-orange-900/20 border-orange-800 text-center">
               <CardContent className="p-8">
-                <div className="text-4xl font-bold text-orange-400 mb-2">&lt;=10%</div>
-                <div className="text-white font-semibold mb-2">Max Drawdown</div>
-                <div className="text-gray-300 text-sm">Historical maximum loss from peak to trough</div>
+                <div className="text-4xl font-bold text-orange-400 mb-2">≤10%</div>
+                <div className="text-lg font-semibold text-white mb-2">Max Drawdown</div>
+                <div className="text-sm text-gray-300">Historical maximum loss from peak to trough</div>
               </CardContent>
             </Card>
           </div>
@@ -292,110 +338,191 @@ export default function InvestmentDeckPage() {
         {/* Fund Structure */}
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">Fund Structure</h2>
-          <div className="bg-black/60 rounded-2xl p-8 border border-gray-800 mb-8">
-            <p className="text-gray-300 text-lg text-center mb-8">
-              CAP - Collective Alpha Partners, LLC is managed by CAP-GC, LLC
-              <br />
-              CAP Portfolio consist of 6 managed funds, with collective $475M AUM
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="bg-gray-900/80 border-gray-800 text-center">
-                <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">1.5%</div>
-                  <div className="text-white font-semibold mb-2">Base Fee</div>
-                  <div className="text-gray-300 text-sm">Annual management fee</div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-900/80 border-gray-800 text-center">
-                <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-green-400 mb-2">15%</div>
-                  <div className="text-white font-semibold mb-2">Standard Carry</div>
-                  <div className="text-gray-300 text-sm">Up to 15% return</div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-900/80 border-gray-800 text-center">
-                <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">20%</div>
-                  <div className="text-white font-semibold mb-2">Higher Carry</div>
-                  <div className="text-gray-300 text-sm">On returns above 15%</div>
-                </CardContent>
-              </Card>
-            </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <Card className="bg-gray-900/80 border-gray-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Structure</h3>
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-lg font-semibold text-blue-400">Entity</div>
+                    <div className="text-gray-300">CAP - Collective Alpha Partners, LLC is managed by CAP-GC, LLC</div>
+                  </div>
+                  <div>
+                    <div className="text-lg font-semibold text-blue-400">Portfolio</div>
+                    <div className="text-gray-300">
+                      CAP Portfolio consists of 6 managed funds, with collective $475M AUM
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/80 border-gray-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Fee Structure</h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-blue-400 font-semibold">Base Fee</span>
+                    <span className="text-white text-xl font-bold">1.5%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-green-400 font-semibold">Standard Carry (up to 15%)</span>
+                    <span className="text-white text-xl font-bold">15%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-purple-400 font-semibold">Higher Carry (above 15%)</span>
+                    <span className="text-white text-xl font-bold">20%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
-        {/* S&P 500 Comparison */}
+        {/* CAP vs S&P 500 */}
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">CAP Portfolio vs S&P 500</h2>
           <div className="bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-2xl p-8 border border-gray-800">
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            <p className="text-gray-300 mb-6">
               The CAP Fund has demonstrated exceptional performance relative to the S&P 500. Over the evaluation period,
-              the fund achieved a compound annual return of <span className="text-green-400 font-semibold">25.34%</span>
-              , significantly outperforming the S&P 500's <span className="text-gray-400">8.62%</span>. This
-              outperformance is accompanied by a notably lower standard deviation of{" "}
-              <span className="text-blue-400 font-semibold">11.37%</span>
-              compared to <span className="text-gray-400">15.06%</span> for the S&P 500, reflecting more stable returns.
+              the fund achieved a compound annual return of 25.34%, significantly outperforming the S&P 500's 8.62%.
+              This outperformance is accompanied by a notably lower standard deviation of 11.37% compared to 15.06% for
+              the S&P 500, reflecting more stable returns.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              The fund has shown consistent annual gains with a{" "}
-              <span className="text-green-400 font-semibold">100% gain frequency</span>, whereas the S&P 500 had
-              negative returns nearly 25% of the time, including a worst annual loss of
-              <span className="text-red-400"> -38.49%</span>.
+            <p className="text-gray-300 mb-6">
+              The fund has shown consistent annual gains with a 100% gain frequency, whereas the S&P 500 had negative
+              returns nearly 25% of the time, including a worst annual loss of -38.49%.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              The CAP Fund's Sharpe ratio of <span className="text-purple-400 font-semibold">1.97</span> (using a 1%
-              risk-free rate) vastly exceeds the S&P 500's <span className="text-gray-400">0.56</span>, illustrating a
-              superior return per unit of risk. Moreover, positive skewness of{" "}
-              <span className="text-green-400 font-semibold">3.04</span> and negative kurtosis of
-              <span className="text-blue-400 font-semibold"> -40.20</span> highlight a favorable asymmetry in return
-              distribution and minimal tail risk exposure.
+            <p className="text-gray-300">
+              The CAP Fund's Sharpe ratio of 1.97 (using a 1% risk-free rate) vastly exceeds the S&P 500's 0.56,
+              illustrating a superior return per unit of risk. Moreover, positive skewness of 3.04 and negative kurtosis
+              of -40.20 highlight a favorable asymmetry in return distribution and minimal tail risk exposure. In
+              contrast, the S&P 500's negative skewness (-0.94) and positive kurtosis (1.43) suggest greater downside
+              asymmetry and fat-tailed risk.
             </p>
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-900/30 to-black/50 rounded-2xl p-8 border border-gray-800">
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to Learn More?</h2>
-            <p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
-              Schedule a consultation to discuss how our investment approach can enhance your portfolio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
-              >
-                Schedule Consultation
-              </a>
-              <a
-                href="/performance"
-                className="inline-flex items-center justify-center px-8 py-3 border border-gray-700 text-gray-300 hover:bg-gray-800 font-semibold rounded-lg transition-colors"
-              >
-                View Performance
-              </a>
-            </div>
+        {/* Why Choose CAP */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">Why Choose Collective Alpha Partners?</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-green-900/20 border-green-800">
+              <CardContent className="p-6">
+                <CheckCircle className="h-8 w-8 text-green-400 mb-4" />
+                <h3 className="text-xl font-bold text-green-400 mb-3">Uncorrelated, Risk-Adjusted Alpha</h3>
+                <p className="text-gray-300 text-sm">
+                  Outperform across all market cycles with uncorrelated strategies mitigating tail risks
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-blue-900/20 border-blue-800">
+              <CardContent className="p-6">
+                <CheckCircle className="h-8 w-8 text-blue-400 mb-4" />
+                <h3 className="text-xl font-bold text-blue-400 mb-3">Tax Efficiency</h3>
+                <p className="text-gray-300 text-sm">
+                  60/40 capital gains tax treatment for superior after-tax returns
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-purple-900/20 border-purple-800">
+              <CardContent className="p-6">
+                <CheckCircle className="h-8 w-8 text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-purple-400 mb-3">Lower Fees</h3>
+                <p className="text-gray-300 text-sm">
+                  Avoid layered fee inefficiencies seen in traditional managed futures funds
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-orange-900/20 border-orange-800">
+              <CardContent className="p-6">
+                <CheckCircle className="h-8 w-8 text-orange-400 mb-4" />
+                <h3 className="text-xl font-bold text-orange-400 mb-3">Multi-Strategy Model</h3>
+                <p className="text-gray-300 text-sm">
+                  Diversify capital across trend, counter-trend, and volatility strategies
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
-            {/* Contact Information */}
-            <div className="border-t border-gray-700 pt-6">
-              <h3 className="text-xl font-bold text-white mb-4">For more information</h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="mailto:curtis@capfund.capital"
-                  className="text-blue-400 hover:text-blue-300 transition-colors text-lg"
-                >
-                  curtis@capfund.capital
-                </a>
-                <span className="text-gray-500 hidden sm:inline">/</span>
-                <a
-                  href="mailto:info@capfund.capital"
-                  className="text-blue-400 hover:text-blue-300 transition-colors text-lg"
-                >
-                  info@capfund.capital
-                </a>
-              </div>
+        {/* Future of Alternative Alpha */}
+        <section className="mb-20">
+          <div className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl p-8 border border-gray-800">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              The Future of Alternative Alpha Generation
+            </h2>
+            <p className="text-gray-300 text-lg text-center">
+              Collective Alpha Partners is not about chasing one "perfect" strategy—it is about building a robust,
+              diversified, risk-adjusted portfolio that thrives across market cycles. By combining multiple asset
+              classes, strategies, and managers, while optimizing for tax efficiency, lower fees, strategic leverage,
+              and dynamic allocation, the fund delivers a scalable, repeatable alpha-generation framework for long-term
+              success.
+            </p>
+            <p className="text-gray-300 text-lg text-center mt-4">
+              This structured approach ensures that investors maximize returns while minimizing systematic risks, making
+              Collective Alpha Partners a compelling alternative to traditional hedge funds, managed futures, and
+              passive investment vehicles.
+            </p>
+          </div>
+        </section>
+
+        {/* Contact Information */}
+        <section className="mb-20">
+          <div className="bg-black/60 rounded-2xl p-8 border border-gray-800 text-center">
+            <h2 className="text-3xl font-bold text-white mb-6">For More Information</h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
+                <Mail className="h-4 w-4 mr-2" />
+                curtis@capfund.capital
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+              >
+                <Mail className="h-4 w-4 mr-2" />
+                info@capfund.capital
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Disclosure */}
+        <section className="bg-gray-900/50 rounded-lg p-8 border border-gray-800">
+          <h3 className="text-lg font-semibold text-white mb-4">Important Disclosures</h3>
+          <div className="text-sm text-gray-400 space-y-4">
+            <div>
+              <h4 className="font-semibold text-gray-300 mb-2">Investment Terms:</h4>
+              <p>
+                This presentation is for informational purposes only and does not constitute an offer to buy or sell
+                securities. Investments in Collective Alpha Partners (CAP) are exclusively available to accredited
+                investors under Regulation D (Rule 506), subject to the Private Placement Memorandum (PPM) terms.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-300 mb-2">Regulatory Status:</h4>
+              <p>
+                CAP operates as a private investment fund with potential exemption from SEC registration under the
+                Investment Company Act of 1940. Our fund manager, Hoyle Creek Capital, operates either as an Exempt
+                Reporting Adviser (ERA) or Registered Investment Adviser (RIA), in compliance with applicable federal
+                and state regulations.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-300 mb-2">Risk Warning:</h4>
+              <p>
+                Investors should understand that these investments are illiquid, speculative, and carry risk of complete
+                capital loss. While we make forward-looking statements based on careful analysis, actual results may
+                differ significantly due to market conditions, economic shifts, and regulatory changes.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-300 mb-2">Regulatory Disclaimer:</h4>
+              <p>
+                This investment has not been reviewed, approved, or endorsed by the SEC, FINRA, or any other U.S.
+                regulatory authority. We strongly advise potential investors to conduct thorough due diligence and seek
+                professional financial, legal, and tax counsel before making any investment decisions.
+              </p>
             </div>
           </div>
         </section>

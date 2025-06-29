@@ -1,54 +1,74 @@
-import { sendGAEvent } from "@next/third-parties/google"
-
-// Custom event tracking functions
-export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
   if (typeof window !== "undefined") {
-    sendGAEvent("event", eventName, parameters)
+    // Google Analytics 4
+    if (window.gtag) {
+      window.gtag("event", eventName, properties)
+    }
+
+    // You can add other analytics providers here
+    console.log("Analytics Event:", eventName, properties)
   }
 }
 
-// Specific tracking functions for your site
-export const trackContactFormSubmit = () => {
+export const trackPageView = (url: string) => {
+  if (typeof window !== "undefined") {
+    if (window.gtag) {
+      window.gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
+        page_path: url,
+      })
+    }
+  }
+}
+
+// Extend the Window interface to include gtag
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Helper wrappers (maintain backward-compatibility with old imports) */
+/* ------------------------------------------------------------------ */
+
+/** CTA clicks from the header */
+export const trackGetStartedClick = (location: string) =>
+  trackEvent("get_started_click", {
+    event_category: "conversion",
+    click_location: location,
+  })
+
+/** Contact form submission */
+export const trackContactFormSubmit = () =>
   trackEvent("contact_form_submit", {
     event_category: "engagement",
     event_label: "contact_form",
   })
-}
 
-export const trackPitchDeckView = () => {
-  trackEvent("pitch_deck_view", {
-    event_category: "engagement",
-    event_label: "pitch_deck",
-  })
-}
-
-export const trackPerformancePageView = (pageType: "annual" | "monthly") => {
+/** Performance page views (annual or monthly) */
+export const trackPerformancePageView = (pageType: "annual" | "monthly") =>
   trackEvent("performance_page_view", {
     event_category: "engagement",
-    event_label: pageType,
     page_type: pageType,
   })
-}
 
-export const trackStrategyPageView = () => {
+/** Strategy page view */
+export const trackStrategyPageView = () =>
   trackEvent("strategy_page_view", {
     event_category: "engagement",
     event_label: "strategy",
   })
-}
 
-export const trackGetStartedClick = (location: string) => {
-  trackEvent("get_started_click", {
-    event_category: "conversion",
-    event_label: "get_started",
-    click_location: location,
+/** Pitch-deck view */
+export const trackPitchDeckView = () =>
+  trackEvent("pitch_deck_view", {
+    event_category: "engagement",
+    event_label: "pitch_deck",
   })
-}
 
-export const trackScheduleConsultation = (location: string) => {
+/** Schedule consultation clicks (CTA buttons) */
+export const trackScheduleConsultation = (location: string) =>
   trackEvent("schedule_consultation", {
     event_category: "conversion",
-    event_label: "consultation",
     click_location: location,
   })
-}

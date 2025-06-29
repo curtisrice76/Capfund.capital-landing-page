@@ -45,7 +45,7 @@ export function Header() {
             href="/tax-efficiency"
             className={`transition-colors ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
           >
-            Tax Efficiency
+            Efficiency
           </Link>
           <Link
             href="/investment"
@@ -129,7 +129,7 @@ export function Header() {
                   href="/tax-efficiency"
                   className={`w-full ${isActive("/tax-efficiency") ? "text-blue-500" : "text-gray-300 hover:text-white"}`}
                 >
-                  Tax Efficiency
+                  Efficiency
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>

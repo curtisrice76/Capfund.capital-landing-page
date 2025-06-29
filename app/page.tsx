@@ -43,7 +43,11 @@ export default function HomePage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+                >
                   Schedule Consultation
                 </Button>
               </Link>
@@ -104,8 +108,8 @@ export default function HomePage() {
         <div className="container mx-auto px-4 lg:px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Optimize Your Portfolio?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Discover how Collective Alpha Partners can enhance your investment strategy with systematic, risk-adjusted
-            alpha generation.
+            Discover how Collective Alpha Partners can enhance your investment strategy with systematic, positive gamma,
+            risk-adjusted alpha generation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
@@ -114,7 +118,11 @@ export default function HomePage() {
               </Button>
             </Link>
             <Link href="/performance">
-              <Button size="lg" variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+              >
                 View Performance
               </Button>
             </Link>
