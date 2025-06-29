@@ -192,11 +192,13 @@ export function Header() {
           </DropdownMenu>
         </div>
 
-        <Link href="/contact" className="hidden md:block">
-          <Button className="bg-blue-500 hover:bg-blue-600 text-white" onClick={() => trackGetStartedClick("header")}>
-            Get Started
-          </Button>
-        </Link>
+        <div className="hidden md:block">
+          <Link href="/contact">
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white" onClick={() => trackGetStartedClick("header")}>
+              Get Started
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   )

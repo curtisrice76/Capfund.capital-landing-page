@@ -7,8 +7,19 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+    unoptimized: true
   },
+  experimental: {
+    serverComponentsExternalPackages: ['nodemailer']
+  },
+  swcMinify: true,
+  reactStrictMode: true
 }
 
 export default nextConfig
