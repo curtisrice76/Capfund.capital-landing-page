@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Download, Mail, TrendingUp, Shield, Target, PieChart, CheckCircle } from "lucide-react"
+import Link from "next/link"
 
 export default function PitchDeckPage() {
   return (
@@ -31,18 +32,24 @@ export default function PitchDeckPage() {
               Download our comprehensive investor presentation or contact us for more information.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
-                <Download className="h-4 w-4 mr-2" />
-                Download PDF
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Contact: curtis@capfund.capital
-              </Button>
+              <Link href="/deck.pdf" target="_blank">
+                <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
+                  <Download className="h-4 w-4 mr-2" />
+                  Download PDF
+                </Button>
+              </Link>
+              <Link href="mailto:curtis@capfund.capital">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+                >
+                  <span className="flex items-center">
+                    <Mail className="h-4 w-4 mr-2" />
+                    curtis@capfund.capital
+                  </span>
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -471,18 +478,22 @@ export default function PitchDeckPage() {
           <div className="bg-black/60 rounded-2xl p-8 border border-gray-800 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">For More Information</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
-                <Mail className="h-4 w-4 mr-2" />
-                curtis@capfund.capital
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                info@capfund.capital
-              </Button>
+              <Link href="mailto:curtis@capfund.capital">
+                <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8">
+                  <Mail className="h-4 w-4 mr-2" />
+                  curtis@capfund.capital
+                </Button>
+              </Link>
+              <Link href="mailto:info@capfund.capital">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  info@capfund.capital
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
